@@ -109,7 +109,7 @@ public class UserController {
             LocalDateTime currentDateTime = LocalDateTime.now();
             Double amount = transaction.getAmount();
                 System.out.println(amount);
-
+            System.out.println("My Transaction Information"+transaction);
             transaction.setStatus("Cancel");
             transactionRepository.save(transaction);
 
@@ -117,6 +117,7 @@ public class UserController {
 
             try {
                 // Create an order request
+
                 JSONObject orderRequest = new JSONObject();
                 orderRequest.put("amount", amount * 100); // Convert amount to paise (currency subunit)
                 orderRequest.put("currency", "INR"); // Set the currency code
@@ -127,9 +128,6 @@ public class UserController {
 
                 // Retrieve the order ID
                 String orderId = order.get("id");
-
-    //
-
 
                 // Perform any additional operations with the order or store the order ID in your system
                 // ...
